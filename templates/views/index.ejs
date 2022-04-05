@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Biblioteka</title>
+    <link rel="icon" href="/img/weather.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main id="site-main">
+      <div class="container">
+        <div class="box-nav d-flex-justify-between">
+          <a href="/addbook" class="border-shadow">
+            <span class="text-gradient">Nowa książka</span>
+          </a>
+
+          <form action="/" method="POST">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Tytuł</th>
+                  <th>Autor</th>
+                  <th>Akcja</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Harry Potter</td>
+                  <td>J.K. Rowling</td>
+                  <td>
+                    <a href="/updatebook" class="btn border-shadow update">
+                      <span class="text-gradient">Edytuj</span>
+                    </a>
+                    <a class="btn border-shadow delete">
+                      <span class="text-gradient">Usuń</span>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+        <%- include('../partials/footer') %>
+      </div>
+    </main>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
