@@ -5,6 +5,7 @@ var Book = require('../../src/models/book')
 exports.create = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: 'Content cannot be empty' })
+    return
   }
 
   const book = new Book({
@@ -15,10 +16,12 @@ exports.create = (req, res) => {
   book
     .save(book)
     .then(data => {
-      req.send(data)
+      res.send(data)
     })
     .catch(e => {
-      req.status(500).send()
+      res.status(500).send({
+        message: e.message || 'Some error occurred while creating a create operation',
+      })
     })
 }
 
