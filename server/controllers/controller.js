@@ -18,13 +18,13 @@ exports.create = (req, res) => {
     .save(book)
     .then(data => {
       // res.send(data)
+      console.log('dupa')
       res.redirect('/')
     })
     .catch(e => {
       res.status(500).send({
         message: e.message || 'Some error occurred while creating a create operation',
       })
-      console.log(req.body)
     })
 }
 
