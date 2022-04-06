@@ -3,7 +3,7 @@
   <td><%= books[i].title %></td>
   <td><%= books[i].author %></td>
   <td>
-    <a href="/updatebook" class="btn border-shadow update">
+    <a href="/updatebook?id=<%= books[i]._id %>" class="btn border-shadow update">
       <span class="text-gradient">Edytuj</span>
     </a>
     <a class="btn border-shadow delete">

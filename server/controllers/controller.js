@@ -3,6 +3,7 @@ const Book = require('../../src/models/book')
 // Create and save a new book
 
 exports.create = (req, res) => {
+  console.log(req.body)
   if (Object.keys(req.body).length === 0) {
     res.status(400).send({ message: 'Content cannot be empty' })
     console.log(req.body)
@@ -18,8 +19,7 @@ exports.create = (req, res) => {
     .save(book)
     .then(data => {
       // res.send(data)
-      console.log('dupa')
-      res.redirect('/')
+      res.redirect('/addbook')
     })
     .catch(e => {
       res.status(500).send({
@@ -76,10 +76,6 @@ exports.update = (req, res) => {
 
 // Delete a book with specified id
 exports.delete = (req, res) => {
-  if (Object.keys(req.body).length === 0) {
-    return res.status(400).send({ message: 'Data to delete can not be empty' })
-  }
-
   const id = req.params.id
   Book.findByIdAndDelete(id)
     .then(data => {

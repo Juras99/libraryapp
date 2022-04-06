@@ -11,7 +11,7 @@ dotenv.config({ path: '.env' })
 const port = process.env.PORT || 8000
 
 app.use(morgan('tiny'))
-
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 const publicDirectoryPath = path.join(__dirname, '../public')

@@ -13,6 +13,6 @@ route.get('/updatebook', services.updatebook)
 route.post('/api/books', controller.create)
 route.get('/api/books', controller.find)
 route.put('/api/books/:id', controller.update)
-route.delete('/api/books/:id', controller.create)
+route.delete('/api/books/:id', controller.delete)
 
 module.exports = route

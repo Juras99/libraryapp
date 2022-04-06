@@ -16,5 +16,12 @@ exports.addbook = (req, res) => {
 }
 
 exports.updatebook = (req, res) => {
-  res.render('updateBook')
+  axios
+    .get('http://localhost:8000/api/books', { params: { id: req.query.id } })
+    .then(function (bookdata) {
+      res.render('updateBook', { book: bookdata.data })
+    })
+    .catch(e => {
+      res.send(e)
+    })
 }
