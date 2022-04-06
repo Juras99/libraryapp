@@ -17,25 +17,40 @@ exports.create = (req, res) => {
   book
     .save(book)
     .then(data => {
-      res.send(data)
+      // res.send(data)
+      res.redirect('/')
     })
     .catch(e => {
       res.status(500).send({
         message: e.message || 'Some error occurred while creating a create operation',
       })
       console.log(req.body)
-      console.log(e)
     })
 }
 
 // Retrieve all books / single book
 
 exports.find = (req, res) => {
-  Book.find()
-    .then(book => {
-      res.send(book)
-    })
-    .catch(e => res.status(500).send({ message: e.message || 'Error occured while retriving user information' }))
+  if (req.query.id) {
+    const id = req.query.id
+    Book.findById(id)
+      .then(data => {
+        if (!data) {
+          res.status(404).send({ message: 'Not found book with id ' + id })
+        } else {
+          res.send(data)
+        }
+      })
+      .catch(e => {
+        res.status(500).send({ message: 'Eror retriving user with id ' + id })
+      })
+  } else {
+    Book.find()
+      .then(book => {
+        res.send(book)
+      })
+      .catch(e => res.status(500).send({ message: e.message || 'Error occured while retriving user information' }))
+  }
 }
 
 // Update a book

@@ -1,0 +1,14 @@
+<% for(var i=0;i < books.length; i++) {%>
+<tr>
+  <td><%= books[i].title %></td>
+  <td><%= books[i].author %></td>
+  <td>
+    <a href="/updatebook" class="btn border-shadow update">
+      <span class="text-gradient">Edytuj</span>
+    </a>
+    <a class="btn border-shadow delete">
+      <span class="text-gradient">Usuń</span>
+    </a>
+  </td>
+</tr>
+<%}%>

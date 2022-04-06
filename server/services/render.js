@@ -1,5 +1,14 @@
+const axios = require('axios')
+
 exports.homeRoutes = (req, res) => {
-  res.render('index')
+  axios
+    .get('http://localhost:8000/api/books')
+    .then(function (response) {
+      res.render('index', { books: response.data })
+    })
+    .catch(e => {
+      res.send(e)
+    })
 }
 
 exports.addbook = (req, res) => {
