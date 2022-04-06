@@ -3,16 +3,15 @@ const express = require('express')
 const dotenv = require('dotenv')
 const ejs = require('ejs')
 const morgan = require('morgan')
-const bodyparser = require('body-parser')
 const Router = require('../routes/router')
 
 const app = express()
-dotenv.config({ path: 'config.env' })
+dotenv.config({ path: '.env' })
 const port = process.env.PORT || 8000
 
 app.use(morgan('tiny'))
 
-app.use(bodyparser.urlencoded({ extended: true }))
+app.use(express.json())
 
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')

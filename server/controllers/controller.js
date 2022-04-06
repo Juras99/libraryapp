@@ -3,8 +3,9 @@ var Book = require('../../src/models/book')
 // Create and save a new book
 
 exports.create = (req, res) => {
-  if (!req.body) {
+  if (Object.keys(req.body).length === 0) {
     res.status(400).send({ message: 'Content cannot be empty' })
+    console.log(req.body)
     return
   }
 
