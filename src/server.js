@@ -3,33 +3,30 @@ const express = require('express')
 const dotenv = require('dotenv')
 const ejs = require('ejs')
 const morgan = require('morgan')
-const Router = require('../routes/router')
+const Router = require('./routes/router')
 const mongoose = require('mongoose')
 
 const app = express()
-dotenv.config({ path: '.env' })
 const port = process.env.PORT || 8000
+
+dotenv.config({ path: '.env' })
 
 app.use(morgan('tiny'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-const publicDirectoryPath = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '../templates/views')
-const partialsPath = path.join(__dirname, '../templates/partials')
+const viewsPath = path.join(__dirname, './views/')
+app.use(express.static(path.resolve(__dirname, '../public')))
+app.use('/js', express.static(path.resolve(__dirname, '../public/js')))
 
 app.set('view engine', 'ejs')
 app.set('views', viewsPath)
-
-app.use(express.static(publicDirectoryPath))
 
 app.use(Router)
 
 app.get('*', (req, res) => {
   res.render('404', {
-    title: '404',
     errorText: 'Page not found',
-    name: 'Marcel Jurkiewicz',
   })
 })
 

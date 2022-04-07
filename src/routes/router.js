@@ -1,7 +1,7 @@
 const express = require('express')
 const route = new express.Router()
-const services = require('../server/services/render')
-const controller = require('../server/controllers/controller')
+const services = require('../services/render')
+const controller = require('../controllers/controller')
 
 route.get('/', services.homeRoutes)
 

@@ -1,4 +1,4 @@
-const Book = require('../../src/models/book')
+const Book = require('../models/book')
 
 // Create and save a new book
 
