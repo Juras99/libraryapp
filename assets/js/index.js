@@ -1,3 +1,5 @@
+console.log('TEST')
+
 $('#add_book').submit(function (event) {
   alert('Data inserted successfully!')
 })

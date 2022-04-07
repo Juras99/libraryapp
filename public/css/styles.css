@@ -18,6 +18,10 @@ a {
   text-decoration: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .container {
   max-width: 1024px;
   margin: auto;

@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     .save(book)
     .then(data => {
       // res.send(data)
-      res.redirect('/addbook')
+      res.redirect('/')
     })
     .catch(e => {
       res.status(500).send({
@@ -55,23 +55,38 @@ exports.find = (req, res) => {
 
 // Update a book
 
-exports.update = (req, res) => {
-  if (Object.keys(req.body).length === 0) {
-    return res.status(400).send({ message: 'Data to update can not be empty' })
-  }
+exports.update = async (req, res) => {
+  try {
+    console.log(req.params.id)
 
-  const id = req.params.id
-  Book.findByIdAndUpdate(id, req.body)
-    .then(data => {
-      if (!data) {
-        res.status(404).send({ message: 'Cannot update book with ${id}.' })
-      } else {
-        res.send(data)
-      }
-    })
-    .catch(e => {
-      res.status(500).send({ message: 'Error Update book information' })
-    })
+    const updateBook = await Book.findById(req.params.id)
+    if (!updateBook) throw new Error()
+
+    updateBook.title = req.body.title
+    updateBook.author = req.body.author
+    await updateBook.save()
+
+    res.status(200).send({ book: updateBook })
+
+    /*if (Object.keys(req.body).length === 0) {
+      return res.status(400).send({ message: 'Data to update can not be empty' })
+    }
+
+    const id = req.params.id
+    Book.findByIdAndUpdate(id, req.body)
+      .then(data => {
+        if (!data) {
+          res.status(404).send({ message: 'Cannot update book with ${id}.' })
+        } else {
+          res.send(data)
+        }
+      })
+      .catch(e => {
+        res.status(500).send({ message: 'Error Update book information' })
+      })*/
+  } catch (error) {
+    res.status(500).send({ error })
+  }
 }
 
 // Delete a book with specified id
