@@ -5,11 +5,13 @@ const ejs = require('ejs')
 const morgan = require('morgan')
 const Router = require('./routes/router')
 const mongoose = require('mongoose')
-
-const app = express()
-const port = process.env.PORT || 8000
+const databaseConnect = require('./config/databaseconnect')
 
 dotenv.config({ path: '.env' })
+
+const port = process.env.PORT || 8000
+const app = express()
+databaseConnect(app)
 
 app.use(morgan('tiny'))
 app.use(express.urlencoded({ extended: true }))
@@ -30,7 +32,7 @@ app.get('*', (req, res) => {
   })
 })
 
-async function mongodb() {
+/*async function mongodb() {
   const databaseConnect = () => {
     mongoose.connection.on('connected', () => console.log('Mongoose connected to MongoDB'))
     mongoose.connection.on('error', error => console.log(error.message))
@@ -56,4 +58,8 @@ mongodb()
 
 app.listen(port, () => {
   console.log('Server is up on port ' + port + '.')
+})*/
+
+app.on('ready', () => {
+  app.listen(port, () => console.log('Server is up on port ' + port + '.'))
 })
