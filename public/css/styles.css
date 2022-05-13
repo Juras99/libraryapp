@@ -169,18 +169,17 @@ footer {
   padding: 0.5em 0;
 }
 
-.new_book {
+.new_book,
+.new_author {
   max-width: 786px;
   margin: auto;
 }
 
-#update_book .form-group,
-#add_book .form-group {
-  margin: 0.4em 0;
-}
-
+#add_author .form-group input[type='text'],
+#update_author .form-group input[type='text'],
 #update_book .form-group input[type='text'],
-#add_book .form-group input[type='text'] {
+#add_book .form-group input[type='text'],
+.author-select {
   width: 100%;
   padding: 0.6em 1em;
   margin: 0.5em 0;
