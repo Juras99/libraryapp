@@ -12,16 +12,31 @@ exports.homeRoutes = (req, res) => {
 }
 
 exports.addbook = (req, res) => {
-  res.render('addBook')
+  axios
+    .get('http://localhost:8000/api/authors')
+    .then(function (response) {
+      res.render('addBook', { authors: response.data })
+    })
+    .catch(e => {
+      res.send(e)
+    })
+}
+
+exports.addauthor = (req, res) => {
+  res.render('addAuthor')
 }
 
 exports.updatebook = async (req, res) => {
-  try {
-    const { data } = await axios.get('http://localhost:8000/api/books/', { params: { id: req.query.id } })
-    res.render('updateBook', { book: data })
-  } catch (error) {
-    res.send(error)
-  }
+  axios
+    .get('http://localhost:8000/api/books', { params: { id: req.query.id } })
+    .then(function (book) {
+      axios.get('http://localhost:8000/api/authors').then(function (author) {
+        res.render('updateBook', { book: book.data, authors: author.data })
+      })
+    })
+    .catch(e => {
+      res.send(e)
+    })
 
   /*axios
     .get('http://localhost:8000/api/books', { params: { id: req.query.id } })
