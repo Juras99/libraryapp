@@ -21,6 +21,8 @@
     "postman-request": "^2.88.1-postman.31"
   },
   "devDependencies": {
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
     "nodemon": "^2.0.15"
   },
   "author": "",
