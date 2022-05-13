@@ -11,8 +11,8 @@
   <main id="site-main">
     <div class="container">
       <div class="box-nav d-flex-justify-between">
-        <a href="/authors" class="border-shadow">
-          <span class="text-gradient">Wyświetl autorów</span>
+        <a href="/" class="border-shadow">
+          <span class="text-gradient">Wyświetl książki</span>
         </a>
         <a style="margin-left:20px" href="/addbook" class="border-shadow">
           <span class="text-gradient">Dodaj książkę</span>
@@ -26,13 +26,13 @@
             <thead class="thead-dark">
               <tr>
                 <th>Pozycja</th>
-                <th>Tytuł</th>
-                <th>Autor</th>
+                <th>Imie</th>
+                <th>Nazwisko</th>
                 <th>Akcja</th>
               </tr>
             </thead>
             <tbody>
-              <%- include('./partials/show_books') %>
+              <%- include('./partials/show_authors') %>
             </tbody>
           </table>
         </form>

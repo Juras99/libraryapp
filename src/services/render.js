@@ -26,6 +26,17 @@ exports.addauthor = (req, res) => {
   res.render('addAuthor')
 }
 
+exports.authors = (req, res) => {
+  axios
+    .get('http://localhost:8000/api/authors')
+    .then(function (response) {
+      res.render('authors', { authors: response.data })
+    })
+    .catch(e => {
+      res.send(e)
+    })
+}
+
 exports.updatebook = async (req, res) => {
   axios
     .get('http://localhost:8000/api/books', { params: { id: req.query.id } })
@@ -37,13 +48,15 @@ exports.updatebook = async (req, res) => {
     .catch(e => {
       res.send(e)
     })
+}
 
-  /*axios
-    .get('http://localhost:8000/api/books', { params: { id: req.query.id } })
-    .then(function (bookdata) {
-      res.render('updateBook', { book: bookdata.data })
+exports.updateauthor = async (req, res) => {
+  axios
+    .get('http://localhost:8000/api/authors', { params: { id: req.query.id } })
+    .then(function (author) {
+      res.render('updateAuthor', { author: author.data })
     })
     .catch(e => {
       res.send(e)
-    })*/
+    })
 }

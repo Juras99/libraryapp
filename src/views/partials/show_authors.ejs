@@ -1,0 +1,16 @@
+<% for(var i=0;i < authors.length; i++) {%>
+<% console.log(authors) %>
+<tr>
+  <td><%= i+1 %>.</td>
+  <td><%= authors[i].name %></td>
+  <td><%= authors[i].surname  %></td>
+  <td>
+    <a href="/updateauthor?id=<%= authors[i]._id %>" class="btn border-shadow update">
+      <span class="text-gradient">Edytuj autora</span>
+    </a>
+    <a class="btn border-shadow delete pointer" data-id="<%= authors[i]._id %>">
+      <span class="text-gradient">Usuń</span>
+    </a>
+  </td>
+</tr>
+<%}%>

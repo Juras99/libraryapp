@@ -187,6 +187,8 @@ footer {
   font-size: 1em;
 }
 
+#add_author .form-group .btn,
+#update_author .form-group .btn,
 #update_book .form-group .btn,
 #add_book .form-group .btn {
   width: 100%;

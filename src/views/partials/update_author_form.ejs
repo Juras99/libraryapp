@@ -1,0 +1,16 @@
+<form method="POST" id="update_author">
+  <div class="new_author">
+    <div class="form-group">
+      <label for="name" class="text-light">Imie</label>
+      <input type="hidden" name="id" value="<%= author._id %>" />
+      <input type="text" name="name" value="<%= author.name %>" placeholder="Podaj imię" />
+    </div>
+    <div class="form-group">
+      <label for="surname" class="text-light">Nazwisko</label>
+      <input type="text" name="surname" value="<%= author.surname %>" placeholder="Podaj nazwisko" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn text-dark update">Zapisz</button>
+    </div>
+  </div>
+</form>

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Book = require('./book')
 
 const authorSchema = new mongoose.Schema({
   name: {
@@ -18,6 +19,14 @@ authorSchema.virtual('book', {
   localField: '_id',
   foreignField: 'author',
 })
+
+// authorSchema.pre('remove', async function (next) {
+//   const author = this
+
+//   await Book.deleteMany({ author: author._id })
+
+//   next()
+// })
 
 const Author = mongoose.model('Author', authorSchema)
 

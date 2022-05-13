@@ -145,3 +145,37 @@ exports.findAuthor = (req, res) => {
       .catch(e => res.status(500).send({ message: e.message || 'Error occured while retrieving author information' }))
   }
 }
+
+// Update an author
+
+exports.updateAuthor = async (req, res) => {
+  try {
+    const updateAuthor = await Author.findById(req.params.id)
+    if (!updateAuthor) throw new Error()
+
+    updateAuthor.name = req.body.name
+    updateAuthor.surname = req.body.surname
+    await updateAuthor.save()
+
+    res.status(200).send({ author: updateAuthor })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+// Delete an author with specified id
+exports.deleteAuthor = async (req, res) => {
+  const id = req.params.id
+  Author.findByIdAndDelete(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({ message: 'Cannot delete author with ${id}.' })
+      } else {
+        res.send({ message: 'Author was deleted successfully!' })
+      }
+    })
+    .catch(e => {
+      res.status(500).send({ message: 'Error Delete book information' })
+    })
+  await Book.deleteMany({ author: id })
+}
