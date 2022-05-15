@@ -1,17 +1,13 @@
 <html>
 
-<head>
-  <title>Biblioteka</title>
-  <link rel="icon" href="/img/weather.png" />
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
+<%- include('./partials/head') %>
 
 <body>
   <%- include('./partials/header') %>
   <main id="site-main">
     <div class="container">
       <div class="box-nav d-flex-justify-between">
-        <div class="filter"><a href="/" class="border-shadow">Wszystkie książki</a></div>
+        <%- include('./partials/navbar') %>
       </div>
       <div class="form-title text-center">
         <h2>Edytuj autora</h2>

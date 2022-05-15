@@ -1,25 +1,13 @@
 <html>
 
-<head>
-  <title>Biblioteka</title>
-  <link rel="icon" href="/img/weather.png" />
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
+<%- include('./partials/head') %>
 
 <body>
   <%- include('./partials/header') %>
   <main id="site-main">
     <div class="container">
       <div class="box-nav d-flex-justify-between">
-        <a href="/authors" class="border-shadow">
-          <span class="text-gradient">Wyświetl autorów</span>
-        </a>
-        <a style="margin-left:20px" href="/addbook" class="border-shadow">
-          <span class="text-gradient">Dodaj książkę</span>
-        </a>
-        <a style="margin-left:20px" href="/addauthor" class="border-shadow">
-          <span class="text-gradient">Dodaj autora</span>
-        </a>
+        <%- include('./partials/navbar') %>
 
         <form action="/" method="POST">
           <table class="table">

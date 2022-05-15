@@ -64,6 +64,21 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
+.topnav {
+  border: 1px solid var(--border-btn);
+  box-shadow: 1px 3px 10px #e9ecef;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.6em;
+}
+
+.active {
+  background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: white;
+}
+
 #header nav {
   background-color: var(--dark);
   padding: 1em 0;
